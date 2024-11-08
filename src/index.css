@@ -1,0 +1,238 @@
+:root {
+  --font-size: clamp(2.5rem, 2vw, 3.1rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+li {
+  list-style: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+
+  height: calc(100vh - 2px);
+  width: clamp(34rem, 100%, 50rem);
+  margin-inline: auto;
+}
+
+.header,
+.footer {
+  background-color: navy;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+/*!============================{Typography}  */
+.heading-primary {
+  font-size: var(--font-size);
+  letter-spacing: 0.1rem;
+}
+
+.heading-p {
+  font-size: calc(var(--font-size) * 0.75);
+}
+.heading-p.error--heading {
+  color: red;
+}
+
+/*!====================================={Main}  */
+.main {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  gap: 0.5rem;
+}
+
+.btn {
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: pink;
+  position: relative;
+
+  font-size: calc(var(--font-size) * 0.6);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: inset -0.2rem -0.4rem 0.8rem rgb(0 0 0/0.1);
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+    box-shadow 0.2s ease, border 0.2s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(0.4rem);
+    box-shadow: 0.2rem 0.4rem 0.8rem rgb(0 0 0/0.1);
+  }
+
+  &:focus {
+    border: 1px solid rebeccapurple;
+  }
+
+  &::before {
+    /* content: "click me"; */
+    position: absolute;
+    inset: 0;
+    background-color: red;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 0.5rem;
+  padding-inline: 0.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: inset -0.2rem -0.4rem 0.8rem rgb(0 0 0/0.2);
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  .input {
+    text-align: center;
+    width: 3rem;
+    aspect-ratio: 2;
+    cursor: pointer;
+  }
+
+  &:has(.input:focus) .label {
+    text-decoration: underline;
+  }
+}
+
+.label {
+  font-size: calc(var(--font-size) * 0.5);
+  font-weight: 400;
+}
+
+.svg {
+  display: grid;
+  place-items: center;
+  width: 2.5em;
+  aspect-ratio: 1;
+  justify-self: flex-end;
+}
+
+.svg__icon {
+  color: steelblue;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: color 0.5s ease;
+
+  &:focus,
+  &:hover {
+    color: red;
+    outline: none;
+  }
+}
+
+/*!==================================================={addForm}  */
+.addForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-block: 0.5rem;
+  padding-block: 0.5rem;
+  border: 1px solid #eee;
+  gap: 0.3rem;
+}
+
+.addForm__label {
+  position: absolute;
+  left: -100000rem;
+}
+
+.addForm__input {
+  flex-grow: 1;
+  max-width: calc(100% - 5rem);
+  min-height: 4.8rem;
+  font-size: calc(var(--font-size) * 0.7);
+  margin-inline-start: 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.addForm__button {
+  width: 4.8rem;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  font-size: calc(var(--font-size) * 0.6);
+  background-color: aliceblue;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: mediumblue;
+  transition: background-color 0.5s ease;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: limegreen;
+    outline: none;
+  }
+}
+
+.svg.addForm--svg {
+  width: fit-content;
+  margin-inline: auto;
+  transition: color 0.5s ease;
+}
+
+/*!========================================================{Search}  */
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-inline: 1rem;
+  margin-block: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.searchForm__label {
+  position: absolute;
+  left: -100000000rem;
+}
+
+.searchForm__input {
+  flex-grow: 1;
+  max-width: 100%;
+  padding-block: 1.5rem;
+  padding-inline: 1rem;
+  border-radius: 0.5rem;
+  font-size: calc(var(--font-size) * 0.63);
+}
